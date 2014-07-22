@@ -1,12 +1,13 @@
 == README
  track a client-side event using the Blocmetrics analytics service
 
+```
 <script>
   blocmetrics_track("loaded page", "guest", window.location);
 </script>
-
+```
 //Snippit:
-
+```
 <script>
 var blometics_track = function( what, who, url ){
   var _bm_event = {
@@ -24,3 +25,4 @@ _bm_request.onreadystatechange = function() {
 _bm_request.send(JSON.stringify(_bm_event));
 }
 </script>
+```
