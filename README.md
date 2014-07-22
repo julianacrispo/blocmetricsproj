@@ -9,11 +9,11 @@
 //Snippit:
 ```
 <script>
-var blometics_track = function( what, who, url ){
+var blometics_track = function( what, who, where ){
   var _bm_event = {
     what: what,
     who: who,
-    url :url
+    where: where
   }
 var _bm_request = new XMLHttpRequest();
 _bm_request.open("POST", "http://blocmetrics.com/events.json", true);
