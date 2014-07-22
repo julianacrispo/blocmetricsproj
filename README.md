@@ -1,5 +1,5 @@
 == README
-// track a client-side event using the Blocmetrics analytics service
+ track a client-side event using the Blocmetrics analytics service
 
 <script>
   blocmetrics_track("loaded page", "guest", window.location);
