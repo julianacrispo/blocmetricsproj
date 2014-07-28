@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   #GET /events.json
 
   def allow_cors_requests
+  # byebug
     headers["Access-Control-Allow-Origin"] = "*"
     headers["Access-Control-Allow-Methods"] = %w{POST GET OPTIONS}.join(",")
     headers["Access-Control-Allow-Headers"] =  %w{Origin Accept Content-Type X-Requested-With X-CSRF-Token}.join(",")
@@ -35,7 +36,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    byebug
+  # byebug
     @event = Event.new(event_params)
     #@event = event.build(event_params)
     #@event = Event.new

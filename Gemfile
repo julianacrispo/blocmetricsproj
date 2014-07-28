@@ -8,9 +8,14 @@ group :production do
    gem 'rails_12factor'
  end
  
- group :development do
+group :development do
    gem 'sqlite3'
- end
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+end
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
