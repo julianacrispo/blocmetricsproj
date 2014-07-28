@@ -35,6 +35,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    byebug
     @event = Event.new(event_params)
     #@event = event.build(event_params)
     #@event = Event.new
