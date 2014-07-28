@@ -1,15 +1,27 @@
 <%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div class = "form-group">
+  <%= f.label :who %>
+  <%= f.text_field :who, class: 'form-control', placeholder: "User name to track" %>
+</div>
+  <%= f.label :what %>
+  <%= f.text_field :what, class: 'form-control', placeholder: "Page views or Clicks" %>
+<div class = "form-group">
+  <%= f.label :where %>
+  <%= f.text_field :where, class: 'form-control', placeholder: "Enter URL" %>
+</div>
 
-      <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <% if @event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+        <ul>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
 
   <div class="actions">
     <%= f.submit %>
