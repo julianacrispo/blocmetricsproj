@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+ 50.times do
+   Event.create(
+     who:  Faker::Internet.free_email,
+     what:   "click", 
+     where: Faker::Internet.url
+   )
+ end
+ Events = Event.all
+ 
+ puts "Seed finished"
+ puts "#{Event.count} events created"
