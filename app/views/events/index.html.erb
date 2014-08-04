@@ -8,7 +8,8 @@
 <div class="row">
   <div class="col-md-4">
     <h2> WHO </h2>
-        <canvas id="myPie" width="300" height="300"></canvas>
+    <p> Something to explain who </p>
+        <canvas id="myPie" width="300" height="325"></canvas>
         <script>
         // Get context with jQuery - using jQuery's .get() method.
         var ctx = $("#myPie").get(0).getContext("2d");
@@ -43,6 +44,7 @@
   </div>
   <div class="col-md-4">
     <h2> WHAT </h2>
+    <p> Something to explain what </p>
     <canvas id="myClicks" width="300" height="400"></canvas>
       <script>
       // Get context with jQuery - using jQuery's .get() method.
@@ -51,7 +53,7 @@
       var myNewClicks = new Chart(ctx);
 
       var data = {
-          labels: ["Etc", "February", "events.created_at", "April", "May", "June", "July"],
+          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
           datasets: [
               {
                   label: "Clicks",
@@ -82,7 +84,8 @@
       </script>
   </div>
   <div class="col-md-4">
-    <h2> Where </h2>
+    <h2> WHERE </h2>
+    <p> Something to explain where </p>
     <canvas id="myWhere" width="300" height="400"></canvas>
       <script>
         // Get context with jQuery - using jQuery's .get() method.
@@ -91,7 +94,261 @@
         var myNewWhere = new Chart(ctx);
 
         var data = {
-            labels: ["Etc", "February", "events.created_at", "April", "May", "June", "July"],
+            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            datasets: [
+                {
+                    label: "Clicks",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "Views",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        };
+
+        myNewWhere.Bar(data, {
+            bezierCurve: true
+        });
+      </script>
+  </div>
+</div>
+
+<!-- row 2 -->
+
+<div class="container-fluid">
+</div>
+  <div class="row">
+    <div class="col-md-4">
+      <h2> WHO (last week) </h2>
+      <p> Something to explain who </p>
+          <canvas id="myPieLast" width="300" height="325"></canvas>
+          <script>
+          // Get context with jQuery - using jQuery's .get() method.
+          var ctx = $("#myPieLast").get(0).getContext("2d");
+          // This will get the first returned node in the jQuery collection.
+          var myNewPieLast = new Chart(ctx);
+
+          var data = [
+              {
+                  value: 300,
+                  color:"#F7464A",
+                  highlight: "#FF5A5E",
+                  label: "Guests"
+              },
+              {
+                  value: 50,
+                  color: "#46BFBD",
+                  highlight: "#5AD3D1",
+                  label: "Users"
+              },
+              {
+                  value: 100,
+                  color: "#FDB45C",
+                  highlight: "#FFC870",
+                  label: "Yellow"
+              }
+          ]
+
+          myNewPieLast.Doughnut(data, {
+              bezierCurve: true
+          });
+      </script>
+    </div>
+    <div class="col-md-4">
+      <h2> WHAT (last week)</h2>
+      <p> Something to explain what </p>
+      <canvas id="myClicksLast" width="300" height="400"></canvas>
+        <script>
+        // Get context with jQuery - using jQuery's .get() method.
+        var ctx = $("#myClicksLast").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var myNewClicksLast = new Chart(ctx);
+
+        var data = {
+            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            datasets: [
+                {
+                    label: "Clicks",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "Views",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        };
+
+        myNewClicksLast.Line(data, {
+            bezierCurve: true
+        });
+        </script>
+    </div>
+    <div class="col-md-4">
+      <h2> WHERE (last week)</h2>
+      <p> Something to explain where </p>
+      <canvas id="myWhereLast" width="300" height="400"></canvas>
+        <script>
+          // Get context with jQuery - using jQuery's .get() method.
+          var ctx = $("#myWhereLast").get(0).getContext("2d");
+          // This will get the first returned node in the jQuery collection.
+          var myNewWhereLast = new Chart(ctx);
+
+          var data = {
+              labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+              datasets: [
+                  {
+                      label: "Clicks",
+                      fillColor: "rgba(220,220,220,0.2)",
+                      strokeColor: "rgba(220,220,220,1)",
+                      pointColor: "rgba(220,220,220,1)",
+                      pointStrokeColor: "#fff",
+                      pointHighlightFill: "#fff",
+                      pointHighlightStroke: "rgba(220,220,220,1)",
+                      data: [65, 59, 80, 81, 56, 55, 40]
+                  },
+                  {
+                      label: "Views",
+                      fillColor: "rgba(151,187,205,0.2)",
+                      strokeColor: "rgba(151,187,205,1)",
+                      pointColor: "rgba(151,187,205,1)",
+                      pointStrokeColor: "#fff",
+                      pointHighlightFill: "#fff",
+                      pointHighlightStroke: "rgba(151,187,205,1)",
+                      data: [28, 48, 40, 19, 86, 27, 90]
+                  }
+              ]
+          };
+
+          myNewWhereLast.Bar(data, {
+              bezierCurve: true
+          });
+        </script>
+    </div>
+  </div>
+
+
+<!-- row 3 of chart fun! -->
+
+<div class="row">
+  <div class="col-md-4">
+    <h2> ORIGIN</h2>
+    <p> Something to explain origin </p>
+        <canvas id="myRadar" width="300" height="325"></canvas>
+        <script>
+        // Get context with jQuery - using jQuery's .get() method.
+        var ctx = $("#myRadar").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var myNewRadar = new Chart(ctx);
+
+        var data = {
+    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: [65, 59, 90, 81, 56, 55, 40]
+        },
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [28, 48, 40, 19, 96, 27, 100]
+        }
+    ]
+};
+
+        myNewRadar.Radar(data, {
+            bezierCurve: true
+        });
+    </script>
+  </div>
+  <div class="col-md-4">
+    <h2> PATHS </h2>
+    <p> Something to explain what </p>
+    <canvas id="myClicks" width="300" height="400"></canvas>
+      <script>
+      // Get context with jQuery - using jQuery's .get() method.
+      var ctx = $("#myClicks").get(0).getContext("2d");
+      // This will get the first returned node in the jQuery collection.
+      var myNewClicks = new Chart(ctx);
+
+      var data = {
+          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          datasets: [
+              {
+                  label: "Clicks",
+                  fillColor: "rgba(220,220,220,0.2)",
+                  strokeColor: "rgba(220,220,220,1)",
+                  pointColor: "rgba(220,220,220,1)",
+                  pointStrokeColor: "#fff",
+                  pointHighlightFill: "#fff",
+                  pointHighlightStroke: "rgba(220,220,220,1)",
+                  data: [65, 59, 80, 81, 56, 55, 40]
+              },
+              {
+                  label: "Views",
+                  fillColor: "rgba(151,187,205,0.2)",
+                  strokeColor: "rgba(151,187,205,1)",
+                  pointColor: "rgba(151,187,205,1)",
+                  pointStrokeColor: "#fff",
+                  pointHighlightFill: "#fff",
+                  pointHighlightStroke: "rgba(151,187,205,1)",
+                  data: [28, 48, 40, 19, 86, 27, 90]
+              }
+          ]
+      };
+
+      myNewClicks.Line(data, {
+          bezierCurve: true
+      });
+      </script>
+  </div>
+  <div class="col-md-4">
+    <h2> WHERE </h2>
+    <p> Something to explain where </p>
+    <canvas id="myWhere" width="300" height="400"></canvas>
+      <script>
+        // Get context with jQuery - using jQuery's .get() method.
+        var ctx = $("#myWhere").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var myNewWhere = new Chart(ctx);
+
+        var data = {
+            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
             datasets: [
                 {
                     label: "Clicks",
