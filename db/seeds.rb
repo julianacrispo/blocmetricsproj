@@ -12,7 +12,7 @@
      where: Faker::Internet.url
    )
  end
- Events = Event.all
+
  
  puts "Seed finished"
  puts "#{Event.count} events created"

@@ -6,12 +6,11 @@ class EventsController < ApplicationController
   #GET /events.json
 
   def allow_cors_requests
-  # byebug
-    headers["Access-Control-Allow-Origin"] = "*"
-    headers["Access-Control-Allow-Methods"] = %w{POST GET OPTIONS}.join(",")
-    headers["Access-Control-Allow-Headers"] =  %w{Origin Accept Content-Type X-Requested-With X-CSRF-Token}.join(",")
-    headers["Access-Control-Max-Age"] = "1728000"
-    head(:ok) if request.request_method == "OPTIONS"
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Expose-Headers'] = 'ETag'
+      headers['Access-Control-Allow-Methods'] = 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD'
+      headers['Access-Control-Allow-Headers'] = '*,x-requested-with,Content-Type,If-Modified-Since,If-None-Match'
+      headers['Access-Control-Max-Age'] = '1728000'
   end
 
   def index
