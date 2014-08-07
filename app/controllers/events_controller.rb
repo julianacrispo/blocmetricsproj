@@ -14,8 +14,13 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all 
+    @events = Event.where(who: 'guest') #Event.all 
     @event = Event.new 
+
+    number_of_guests = Event.where(who: 'guest').count
+    total_users = Event.count
+    percent_guests = number_of_guests / total_users * 100
+    @user_percentages = { guests: percent_guests, users: (100 - percent_guests) }
   end
 
   # GET /events/1

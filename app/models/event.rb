@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessor :who, :what, :where
+  # attr_accessor :who, :what, :where
 
 
   def grouped_created_at

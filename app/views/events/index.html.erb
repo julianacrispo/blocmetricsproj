@@ -18,22 +18,16 @@
 
         var data = [
             {
-                value: 300,
+                value: <%= @user_percentages[:guests] %>,
                 color:"#F7464A",
                 highlight: "#FF5A5E",
                 label: "Guests"
             },
             {
-                value: 50,
+                value: <%= @user_percentages[:users] %> ,
                 color: "#46BFBD",
                 highlight: "#5AD3D1",
                 label: "Users"
-            },
-            {
-                value: 100,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "Yellow"
             }
         ]
 
@@ -372,6 +366,9 @@
                 }
             ]
         };
+
+        var event_data = <%= @events.to_json.html_safe %>;
+
 
         myNewWhere.Bar(data, {
             bezierCurve: true
