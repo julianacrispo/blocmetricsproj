@@ -23,6 +23,7 @@ class EventsController < ApplicationController
     @user_percentages = { guests: percent_guests, users: (100 - percent_guests) }
 
     @number_of_clicks = Event.where(what: 'loaded page').count
+    @loaded_pages_by_day = @events.where(what: "loaded page").group("DATE(created_at)").count
   end
 
   # GET /events/1

@@ -27,6 +27,7 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'figaro'
 gem 'faker'
 gem 'byebug'
+gem 'groupdate'
 
 
 gem 'sdoc', '~> 0.4.0',          group: :doc

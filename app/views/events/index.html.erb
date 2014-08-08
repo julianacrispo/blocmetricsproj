@@ -37,47 +37,48 @@
   </div>
   <div class="col-md-4">
     <h2> WHAT </h2>
-    <p> Something to explain what </p>
-    <canvas id="myClicks" width="300" height="400"></canvas>
-      <script>
-      // Get context with jQuery - using jQuery's .get() method.
-      var ctx = $("#myClicks").get(0).getContext("2d");
-      // This will get the first returned node in the jQuery collection.
-      var myNewClicks = new Chart(ctx);
+    <p> What are people clicking on? </p>
+    <canvas id="myRadar" width="300" height="325"></canvas>
+        <script>
+        // Get context with jQuery - using jQuery's .get() method.
+        var ctx = $("#myRadar").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var myNewRadar = new Chart(ctx);
 
-      var data = {
-    
-          datasets: [
-              {
-                  label: "Clicks",
-                  fillColor: "rgba(220,220,220,0.2)",
-                  strokeColor: "rgba(220,220,220,1)",
-                  pointColor: "rgba(220,220,220,1)",
-                  pointStrokeColor: "#fff",
-                  pointHighlightFill: "#fff",
-                  pointHighlightStroke: "rgba(220,220,220,1)",
-                  data: <%= @events.where(what: "loaded page").count(group: "DATE(created_at)").to_json %>
-              },
-              {
-                  label: "Views",
-                  fillColor: "rgba(151,187,205,0.2)",
-                  strokeColor: "rgba(151,187,205,1)",
-                  pointColor: "rgba(151,187,205,1)",
-                  pointStrokeColor: "#fff",
-                  pointHighlightFill: "#fff",
-                  pointHighlightStroke: "rgba(151,187,205,1)",
-                  data: <%= @events.where(what: "loaded page").count(group: "DATE(created_at)").to_json %>
-          ]
-      };
+        var data = {
+    labels: ["Home", "Signup", "Sign In", "About", "Topics", "Popular", "Users"],
+    datasets: [
+  
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [
+             <%= @events.where(where: "/").count.to_json %>, 
+             <%= @events.where(where: "/users/sign_up").count.to_json %>, 
+             <%= @events.where(where: "/users/sign_in").count.to_json %>, 
+             <%= @events.where(where: "/about").count.to_json %>, 
+             <%= @events.where(where: "/topics").count.to_json %>,
+             <%= @events.where(where: "/popular").count.to_json %>, 
+             <%= @events.where(where: "/users").count.to_json %>
+            ]
+        }
+    ]
+};
 
-      myNewClicks.Line(data, {
-          bezierCurve: true
-      });
-      </script>
+        myNewRadar.Radar(data, {
+            bezierCurve: true
+        });
+    </script>
+        
   </div>
   <div class="col-md-4">
     <h2> WHERE </h2>
-    <p> Something to explain where </p>
+    <p> Where are they going? </p>
     <canvas id="myWhere" width="300" height="400"></canvas>
       <script>
         // Get context with jQuery - using jQuery's .get() method.
@@ -86,7 +87,7 @@
         var myNewWhere = new Chart(ctx);
 
         var data = {
-            labels: ,
+            labels: ["Home", "Sign Un", "Sign In", "About", "Topics", "Popular", "Users"],
             datasets: [
                 {
                     label: "Clicks",
@@ -96,18 +97,16 @@
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    data: [
+                           <%= @events.where(where: "/").count.to_json %>, 
+                           <%= @events.where(where: "/users/sign_up").count.to_json %>, 
+                           <%= @events.where(where: "/users/sign_in").count.to_json %>, 
+                           <%= @events.where(where: "/about").count.to_json %>, 
+                           <%= @events.where(where: "/topics").count.to_json %>,
+                           <%= @events.where(where: "/popular").count.to_json %>, 
+                           <%= @events.where(where: "/users").count.to_json %>]
                 },
-                {
-                    label: "Views",
-                    fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [28, 48, 40, 19, 86, 27, 90]
-                }
+                
             ]
         };
 
@@ -122,136 +121,7 @@
 
 
 
-<!-- row 3 of chart fun! -->
 
-<div class="row">
-  <div class="col-md-4">
-    <h2> ORIGIN</h2>
-    <p> Something to explain origin </p>
-        <canvas id="myRadar" width="300" height="325"></canvas>
-        <script>
-        // Get context with jQuery - using jQuery's .get() method.
-        var ctx = $("#myRadar").get(0).getContext("2d");
-        // This will get the first returned node in the jQuery collection.
-        var myNewRadar = new Chart(ctx);
-
-        var data = {
-    labels: ["Home", "Signup", "Sign In", "Log Out", "About", "Topics", "Popular"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 90, 81, 56, 55, 40]
-        },
-        {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 96, 27, 100]
-        }
-    ]
-};
-
-        myNewRadar.Radar(data, {
-            bezierCurve: true
-        });
-    </script>
-  </div>
-  <div class="col-md-4">
-    <h2> PATHS </h2>
-    <p> Something to explain what </p>
-    <canvas id="myClicks" width="300" height="400"></canvas>
-      <script>
-      // Get context with jQuery - using jQuery's .get() method.
-      var ctx = $("#myClicks").get(0).getContext("2d");
-      // This will get the first returned node in the jQuery collection.
-      var myNewClicks = new Chart(ctx);
-
-      var data = {
-          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          datasets: [
-              {
-                  label: "Clicks",
-                  fillColor: "rgba(220,220,220,0.2)",
-                  strokeColor: "rgba(220,220,220,1)",
-                  pointColor: "rgba(220,220,220,1)",
-                  pointStrokeColor: "#fff",
-                  pointHighlightFill: "#fff",
-                  pointHighlightStroke: "rgba(220,220,220,1)",
-                  data: [65, 59, 80, 81, 56, 55, 40]
-              },
-              {
-                  label: "Views",
-                  fillColor: "rgba(151,187,205,0.2)",
-                  strokeColor: "rgba(151,187,205,1)",
-                  pointColor: "rgba(151,187,205,1)",
-                  pointStrokeColor: "#fff",
-                  pointHighlightFill: "#fff",
-                  pointHighlightStroke: "rgba(151,187,205,1)",
-                  data: [28, 48, 40, 19, 86, 27, 90]
-              }
-          ]
-      };
-
-      myNewClicks.Line(data, {
-          bezierCurve: true
-      });
-      </script>
-  </div>
-  <div class="col-md-4">
-    <h2> WHERE </h2>
-    <p> Something to explain where </p>
-    <canvas id="myWhere" width="300" height="400"></canvas>
-      <script>
-        // Get context with jQuery - using jQuery's .get() method.
-        var ctx = $("#myWhere").get(0).getContext("2d");
-        // This will get the first returned node in the jQuery collection.
-        var myNewWhere = new Chart(ctx);
-
-        var data = {
-            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            datasets: [
-                {
-                    label: "Clicks",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                },
-                {
-                    label: "Views",
-                    fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [28, 48, 40, 19, 86, 27, 90]
-                }
-            ]
-        };
-
-        var event_data = <%= @events.to_json.html_safe %>;
-
-
-        myNewWhere.Bar(data, {
-            bezierCurve: true
-        });
-      </script>
-  </div>
-</div>
 
 
 <!-- testing -->
@@ -318,6 +188,8 @@
 
   <h4> SIGN INS </h4>  
  <%= @events.where(where: "/users/sign_in").count.to_json %>
+  <h4> Topics </h4>  
+   <%= @events.where(where: "/topics").count.to_json %>
 
 
 
@@ -336,5 +208,9 @@
 <h4> by date </h4>
 <%= @events.group_by{ |event| event.created_at.to_date } %>
 
-<h4> total events </h4>
-<%= @events.group_by(&:group_by_criteria).map %>
+<h4> Views by day</h4>
+<%=  @loaded_pages_by_day %>
+
+
+
+<!-- Event.group_by_day(:created_at).count -->
