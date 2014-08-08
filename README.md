@@ -1,5 +1,5 @@
 == README
- track a client-side event using the Blocmetrics analytics service
+ track a client-side event using the GhettoLytics analytics service. 
 
 <script>
 var blocmetrics_track = function( what, who, where ){
