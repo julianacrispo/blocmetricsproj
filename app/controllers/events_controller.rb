@@ -21,6 +21,8 @@ class EventsController < ApplicationController
     total_users = Event.count
     percent_guests = number_of_guests / total_users * 100
     @user_percentages = { guests: percent_guests, users: (100 - percent_guests) }
+
+    @number_of_clicks = Event.where(what: 'loaded page').count
   end
 
   # GET /events/1

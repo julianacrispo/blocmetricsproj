@@ -3,12 +3,11 @@
     var data = <%= @events.where(what: "click").count(group: "DATE(created_at)").to_json %>;
 </script>
 
-<%= Event  %>
 
 <div class="row">
   <div class="col-md-4">
     <h2> WHO </h2>
-    <p> Something to explain who </p>
+    <p> Users or Guests </p>
         <canvas id="myPie" width="300" height="325"></canvas>
         <script>
         // Get context with jQuery - using jQuery's .get() method.
@@ -47,7 +46,7 @@
       var myNewClicks = new Chart(ctx);
 
       var data = {
-          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    
           datasets: [
               {
                   label: "Clicks",
@@ -57,7 +56,7 @@
                   pointStrokeColor: "#fff",
                   pointHighlightFill: "#fff",
                   pointHighlightStroke: "rgba(220,220,220,1)",
-                  data: [65, 59, 80, 81, 56, 55, 40]
+                  data: <%= @events.where(what: "loaded page").count(group: "DATE(created_at)").to_json %>
               },
               {
                   label: "Views",
@@ -67,8 +66,7 @@
                   pointStrokeColor: "#fff",
                   pointHighlightFill: "#fff",
                   pointHighlightStroke: "rgba(151,187,205,1)",
-                  data: [28, 48, 40, 19, 86, 27, 90]
-              }
+                  data: <%= @events.where(what: "loaded page").count(group: "DATE(created_at)").to_json %>
           ]
       };
 
@@ -88,7 +86,7 @@
         var myNewWhere = new Chart(ctx);
 
         var data = {
-            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            labels: ,
             datasets: [
                 {
                     label: "Clicks",
@@ -122,128 +120,6 @@
 
 <!-- row 2 -->
 
-<div class="container-fluid">
-</div>
-  <div class="row">
-    <div class="col-md-4">
-      <h2> WHO (last week) </h2>
-      <p> Something to explain who </p>
-          <canvas id="myPieLast" width="300" height="325"></canvas>
-          <script>
-          // Get context with jQuery - using jQuery's .get() method.
-          var ctx = $("#myPieLast").get(0).getContext("2d");
-          // This will get the first returned node in the jQuery collection.
-          var myNewPieLast = new Chart(ctx);
-
-          var data = [
-              {
-                  value: 300,
-                  color:"#F7464A",
-                  highlight: "#FF5A5E",
-                  label: "Guests"
-              },
-              {
-                  value: 50,
-                  color: "#46BFBD",
-                  highlight: "#5AD3D1",
-                  label: "Users"
-              },
-              {
-                  value: 100,
-                  color: "#FDB45C",
-                  highlight: "#FFC870",
-                  label: "Yellow"
-              }
-          ]
-
-          myNewPieLast.Doughnut(data, {
-              bezierCurve: true
-          });
-      </script>
-    </div>
-    <div class="col-md-4">
-      <h2> WHAT (last week)</h2>
-      <p> Something to explain what </p>
-      <canvas id="myClicksLast" width="300" height="400"></canvas>
-        <script>
-        // Get context with jQuery - using jQuery's .get() method.
-        var ctx = $("#myClicksLast").get(0).getContext("2d");
-        // This will get the first returned node in the jQuery collection.
-        var myNewClicksLast = new Chart(ctx);
-
-        var data = {
-            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            datasets: [
-                {
-                    label: "Clicks",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                },
-                {
-                    label: "Views",
-                    fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [28, 48, 40, 19, 86, 27, 90]
-                }
-            ]
-        };
-
-        myNewClicksLast.Line(data, {
-            bezierCurve: true
-        });
-        </script>
-    </div>
-    <div class="col-md-4">
-      <h2> WHERE (last week)</h2>
-      <p> Something to explain where </p>
-      <canvas id="myWhereLast" width="300" height="400"></canvas>
-        <script>
-          // Get context with jQuery - using jQuery's .get() method.
-          var ctx = $("#myWhereLast").get(0).getContext("2d");
-          // This will get the first returned node in the jQuery collection.
-          var myNewWhereLast = new Chart(ctx);
-
-          var data = {
-              labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-              datasets: [
-                  {
-                      label: "Clicks",
-                      fillColor: "rgba(220,220,220,0.2)",
-                      strokeColor: "rgba(220,220,220,1)",
-                      pointColor: "rgba(220,220,220,1)",
-                      pointStrokeColor: "#fff",
-                      pointHighlightFill: "#fff",
-                      pointHighlightStroke: "rgba(220,220,220,1)",
-                      data: [65, 59, 80, 81, 56, 55, 40]
-                  },
-                  {
-                      label: "Views",
-                      fillColor: "rgba(151,187,205,0.2)",
-                      strokeColor: "rgba(151,187,205,1)",
-                      pointColor: "rgba(151,187,205,1)",
-                      pointStrokeColor: "#fff",
-                      pointHighlightFill: "#fff",
-                      pointHighlightStroke: "rgba(151,187,205,1)",
-                      data: [28, 48, 40, 19, 86, 27, 90]
-                  }
-              ]
-          };
-
-          myNewWhereLast.Bar(data, {
-              bezierCurve: true
-          });
-        </script>
-    </div>
-  </div>
 
 
 <!-- row 3 of chart fun! -->
@@ -260,7 +136,7 @@
         var myNewRadar = new Chart(ctx);
 
         var data = {
-    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    labels: ["Home", "Signup", "Sign In", "Log Out", "About", "Topics", "Popular"],
     datasets: [
         {
             label: "My First dataset",
@@ -423,7 +299,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= link_to event.who, event %></td>
+        <td><%= link_to event.where, event %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -434,27 +310,31 @@
 
 <br>
 
+  <h4> Total App Views </h4>
   <%= @events.where(what: "loaded page").count(group: "DATE(created_at)").to_json %>
-   <%= @events.where(what: "click").count.to_json %>
+
+ <h4> HOME Views(/ path) </h4>  
+ <%= @events.where(where: "/").count.to_json %>
+
+  <h4> SIGN INS </h4>  
+ <%= @events.where(where: "/users/sign_in").count.to_json %>
 
 
 
-<%= link_to 'New Event', new_event_path %>
 
 <script>
   var data = <%= @events.where(what: "click").count(group: "DATE(created_at)").to_json %>;
 </script>
 
 
-<% @events.each do |e| %>
- <%= e.created_at.strftime("%b %d") %>
-<% end %>
-
-<%= @events.group(:origin) %>
-<%= Event.where("origin = 'http://juliana-bloccit.herokuapp.com'")%>
-<%= Event.where("who = 'guest'")%>
 
 
 
+<h4> total events </h4>
+<%= Event.count(:order => 'DATE(created_at) DESC', :group => ["DATE(created_at)"]) %>
 
+<h4> by date </h4>
+<%= @events.group_by{ |event| event.created_at.to_date } %>
 
+<h4> total events </h4>
+<%= @events.group_by(&:group_by_criteria).map %>
