@@ -119,6 +119,103 @@
 
 <!-- row 2 -->
 
+<div class="row">
+  <div class="col-md-4">
+    <h2> Line Chart </h2>
+    <p> Users or Guests </p>
+        <canvas id="myLine" width="300" height="325"></canvas>
+        <script>
+        // Get context with jQuery - using jQuery's .get() method.
+        var ctx = $("#myLine").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var myNewLine = new Chart(ctx);
+
+         var data = {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+              {
+                  label: "My First dataset",
+                  fillColor: "rgba(220,220,220,0.2)",
+                  strokeColor: "rgba(220,220,220,1)",
+                  pointColor: "rgba(220,220,220,1)",
+                  pointStrokeColor: "#fff",
+                  pointHighlightFill: "#fff",
+                  pointHighlightStroke: "rgba(220,220,220,1)",
+                  data: [65, 59, 80, 81, 56, 55, 40]
+              },
+              {
+                  label: "My Second dataset",
+                  fillColor: "rgba(151,187,205,0.2)",
+                  strokeColor: "rgba(151,187,205,1)",
+                  pointColor: "rgba(151,187,205,1)",
+                  pointStrokeColor: "#fff",
+                  pointHighlightFill: "#fff",
+                  pointHighlightStroke: "rgba(151,187,205,1)",
+                  data: [28, 48, 40, 19, 86, 27, 90]
+              }
+          ]
+      };
+
+        myNewLine.Line(data, {
+            bezierCurve: true
+        });
+    </script>
+  </div>
+  <div class="col-md-4">
+    <h2> Events </h2>
+    <p> What are people clicking on? </p>
+    <table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to event.where, event %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+    
+  </div>
+  <div class="col-md-4">
+    <h2> Summary </h2>
+    <p> Where are they going? </p>
+    
+  <h4> Total App Views </h4>
+  <%= @events.where(what: "loaded page").count(group: "DATE(created_at)").to_json %>
+
+ <h4> HOME Views(/ path) </h4>  
+ <%= @events.where(where: "/").count.to_json %>
+
+  <h4> SIGN INS </h4>  
+ <%= @events.where(where: "/users/sign_in").count.to_json %>
+  <h4> Topics </h4>  
+   <%= @events.where(where: "/topics").count.to_json %>
+
+
+
+
+<script>
+  var data = <%= @events.where(what: "click").count(group: "DATE(created_at)").to_json %>;
+</script>
+
+
+
+
+
+<h4> total events </h4>
+<%= Event.count(:order => 'DATE(created_at) DESC', :group => ["DATE(created_at)"]) %>
+  </div>
+</div>
 
 
 
@@ -157,59 +254,15 @@
 
 
 
-<h1>All Your Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to event.where, event %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-  <h4> Total App Views </h4>
-  <%= @events.where(what: "loaded page").count(group: "DATE(created_at)").to_json %>
-
- <h4> HOME Views(/ path) </h4>  
- <%= @events.where(where: "/").count.to_json %>
-
-  <h4> SIGN INS </h4>  
- <%= @events.where(where: "/users/sign_in").count.to_json %>
-  <h4> Topics </h4>  
-   <%= @events.where(where: "/topics").count.to_json %>
-
-
-
-
-<script>
-  var data = <%= @events.where(what: "click").count(group: "DATE(created_at)").to_json %>;
-</script>
-
-
-
-
-
-<h4> total events </h4>
-<%= Event.count(:order => 'DATE(created_at) DESC', :group => ["DATE(created_at)"]) %>
 
 <h4> by date </h4>
 <%= @events.group_by{ |event| event.created_at.to_date } %>
 
 <h4> Views by day</h4>
 <%=  @loaded_pages_by_day %>
+
+<span class= "glyphicon glyphicon-eye-open">glyph</span>
+<span class= "glyphicon-class">glyph</span>
 
 
 
